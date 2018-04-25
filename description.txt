@@ -1,0 +1,23 @@
+Write a routine for estimating the condition number κ(A) of a matrix A using the L1-norm. You will need to compute ‖A‖1, 
+which should be easy, and estimate ‖A−1‖1, which is more challenging. Note that we only want to estimate ‖A−1‖1, not compute 
+it exactly (up to finite precision). 
+One way to estimate ‖A−1‖1 is to choose a vector y such that the ratio ‖z‖/‖y‖ is large, where z is the solution to Az=y.
+Try two different approaches to choosing y:
+
+1.) Choose y as the solution to the system (A^T)y=c, where c is a vector each of whose components is ±1, with the sign for each 
+component chosen by the following heuristic. Using the factorization A=LU, the system (A^T)y=c is solved in two stages, 
+successively solving the triangular systems (U^T)v=c and (L^T)y=v. At each step of the first triangular solution, choose the 
+corresponding component of c to be either 1 or −1, depending on which will make the resulting component of v larger in 
+magnitude. (You will need to write a custom triangular solution routine to implement this.) 
+Then solve the second triangular system in the usual way for y.
+
+2.) Choose five different vectors y randomly and use the one producing the largest ratio ‖z‖/‖y‖.
+
+Test the approaches on the following matrices:
+
+A1 = [[-10, 7, 0], [5, -1, 5], [-3, 2, 6]]
+
+A2 = [[92, 66, 25], [-73, 78, 24], [-80, 37, 10]]
+
+Note: the function np.linalg.solve(A,b), may be used to solve the linear system Ax = b, but may not be used to solve (U^T)v = c.
+You also may not use np.linalg.norm to compute the norm of a matrix. You may only use it to compute the norm of a vector.
