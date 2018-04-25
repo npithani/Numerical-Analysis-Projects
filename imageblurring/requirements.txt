@@ -1,0 +1,5 @@
+Consider the image blurring example discussed in class, and suppose we denote the matrix of grayscale pixel values as I. 
+Modify the Python script blur.py to use the following operation instead:
+
+I[i,j]=+116(8⋅I[i,j]+I[i−1,j]+I[i−1,j−1]+I[i−1,j+1]+I[i,j−1]I[i,j+1]+I[i+1,j]+I[i+1,j−1]+I[i+1,j+1])
+Compute the blurred image after 20 iterations of this modified scheme.
